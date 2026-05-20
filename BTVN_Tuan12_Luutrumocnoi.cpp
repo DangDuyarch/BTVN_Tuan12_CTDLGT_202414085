@@ -1,6 +1,9 @@
 #include <iostream>
 #include <iomanip>
 
+// De bai yeu cau cai dat 3 cay theo cau truc moc noi, phan in ra la bo sung them
+
+
 using namespace std;
 
 struct Node {     // dinh nghiea 1 cautruc nut
@@ -41,39 +44,31 @@ Node* Tziczac() {     // Cai dat thu cong cay ziczac
     return root;
 }
 
-// Hàm in cây, mô tả bằng hình 
-void PrintTree(Node* root, int space = 0) {
+void PrintTree(Node* root, int space = 0) {    // Bo sung ham mo ta cay bang hinh ve
     if (root == nullptr) return;
 
-    // Tăng khoảng cách giữa các tầng
     space += 8;
-
-    // In nhánh bên phải trước
     PrintTree(root->right, space);
 
-    // In nút hiện tại
     cout << endl;
-    for (int i = 8; i < space; i++) cout << " ";
+    for (int i = 8; i < space; i++) cout << " ";  // ỉn ra theo thu tu tu trai sang phai thay vi tren xuong duoi
     
-    // Biển diễn dưới dạng móc nối trực quan [L| Data |R]
-    cout << "[" << (root->left ? "•" : "X") << "|" << root->data << "|" << (root->right ? "•" : "X") << "]\n";
-
-    // In nhánh bên trái
+    cout <<  root->data  << "\n";
     PrintTree(root->left, space);
 }
 
-// --- HÀM MAIN ĐỂ CHẠY THỬ ---
+
 int main() {
 
-    cout << "\n=== 2. CAY LECH TRAI ===";
+    cout << "\n CAY LECH TRAI";
     Node* leftSkewed = TLeft();
     PrintTree(leftSkewed);
 
-    cout << "\n=== 3. CAY LECH PHAI ===";
+    cout << "\nCAY LECH PHAI";
     Node* rightSkewed = TRight();
     PrintTree(rightSkewed);
 
-    cout << "\n=== 4. CAY ZIGZAC ===";
+    cout << "\nCAY ZIGZAC";
     Node* zigzag = Tziczac();
     PrintTree(zigzag);
 
